@@ -7,12 +7,15 @@
 For this exercise you will be creating a `Checkout` class
 
 It will have the following properties...
-* `items': **which should be start out as an empty array**
+
+* `items`: **which should be start out as an empty array**
 
 * `subtotal`: which should start out as `0`
 
 It should have the following methods...
+
 * `addItem(item)`:
+
   - accepts an `item` object as a parameter
 
   - this method adds a new item to the `items` property (remember this property should be an array)
