@@ -1,6 +1,6 @@
 # OOP Order Checkout App
 
-### Instructions
+### Requirements
 
 #### Requirement #1: Add OOP Logic
 
