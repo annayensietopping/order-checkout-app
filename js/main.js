@@ -93,5 +93,110 @@ $(function () {
 
   // -------- OOP Logic (classes) ---------
 
+class Checkout {
+  constructor() {
+    this._items = []
+    this._subtotal = 0
+  }
+
+// methods
+
+addItem(item) {
+  this._items.push(item)
+  }
+
+calculateSubtotal() {
+  // use reduce to calculate sum
+  this._subtotal = this._items.reduce((sum, item) => {
+    return sum = sum + parseFloat(item.price)
+  }, 0) }
+
+calculateTax() {
+    return this._subtotal * 0.08875
+}
+
+calculateTotal() {
+  return this._subtotal + this.calculateTax()
+  }
+
+incrementQuantity(itemId) {
+  // find first item with an id === itemId
+const selectedItem =   this._items.find((item) => {
+    return item.id ===itemId
+  })
+  //selectedItem.quantity = selectedItem.quantity + 1
+  // this is the fancy way to write it uwu
+  selectedItem.quantity++
+}
+
+decrementQuantity(itemId) {
+  const selectedItem =   this._items.find((item) => {
+      return item.id ===itemId
+    })
+    //selectedItem.quantity = selectedItem.quantity - 1
+    // this is the fancy way to write it uwu
+    selectedItem.quantity--
+}
+
+removeItem (itemId) {
+      // find the "index" of element with item.id === itemId
+      const selectedIndex = this._items.findIndex((item) => {
+        return item.id === itemId
+      })
+      // use splice to remove the element at the selectedIndex
+      this._items.splice(selectedIndex, 1)
+    }
+
+}
+// end of methods
+
+const checkout = new Checkout()
+
+//////////////////////////////////////////////////////////
+// TESTING //
+//////////////////////////////////////////////////////
+
+const item1 = { id: 1, name: 'something cool', price: '9.99', quantity: 1}
+const item2 = {id: 2, name: 'something not cool', price: '6.99', quantity: 1}
+
+checkout.addItem(item1)
+checkout.addItem(item2)
+checkout.calculateSubtotal()
+
+console.log(checkout)
+console.log(checkout.calculateTax())
+console.log(checkout.calculateTotal())
+
+checkout.incrementQuantity(2)
+checkout.incrementQuantity(2)
+checkout.incrementQuantity(2)
+checkout.decrementQuantity(2)
+checkout.decrementQuantity(2)
+checkout.removeItem(1)
+
+
+console.log(checkout)
+// const items = [
+//     {
+//       id: 1,
+//       name: 'something cool',
+//       price: '9.99'
+//     },
+//     {
+//       id: 2,
+//       name: 'something else cool',
+//       price: '19.99'
+//     },
+//     {
+//       id: 3,
+//       name: 'widget',
+//       price: '2.99'
+//     }
+//   ]
+//
+// const total = items.reduce((sum, item) => {
+// return  sum = sum + parseFloat(item.price)
+// }, 0)
+// console.log(total)
   // -------- end of OOP Logic (Classes) ---------
 })
